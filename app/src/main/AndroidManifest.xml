@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/appTheme">
         <activity
-            android:name=".views.posts.postslisting.PostsListingActivity"
-            android:label="@string/title_activity_posts_listing"></activity>
-        <activity android:name=".MainActivity">
+            android:name=".ui.posts.postslisting.PostsListingActivity"
+            android:label="@string/title_activity_posts_listing">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

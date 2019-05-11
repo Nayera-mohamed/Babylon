@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Babylon</string>
-    <string name="title_activity_posts_listing">PostsListingActivity</string>
+    <string name="title_activity_posts_listing">Posts</string>
 </resources>
