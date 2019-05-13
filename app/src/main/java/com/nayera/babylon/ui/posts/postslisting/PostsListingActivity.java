@@ -16,6 +16,8 @@ public class PostsListingActivity extends BaseActivity {
         setContentView(R.layout.activity_posts_listing);
         initViews();
         setListeners();
+
+        replaceFragment(R.id.contentLayout, PostsListingFragment.newInstance(), PostsListingFragment.TAG);
     }
 
 
