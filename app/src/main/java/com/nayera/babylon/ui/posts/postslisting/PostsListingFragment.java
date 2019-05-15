@@ -47,11 +47,6 @@ public class PostsListingFragment extends BaseFragment {
     }
 
     @Override
-    public void unbindViewModel() {
-
-    }
-
-    @Override
     public void initViews() {
 
     }
