@@ -1,5 +1,6 @@
-package com.nayera.babylon.api;
+package com.nayera.babylon.data.remote;
 
+import com.nayera.babylon.data.models.ApiResponse;
 import com.nayera.babylon.data.models.Comment;
 import com.nayera.babylon.data.models.Post;
 import com.nayera.babylon.data.models.User;
@@ -8,17 +9,13 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
-import retrofit2.http.GET;
 
-public interface APIInterface {
+public interface IRemoteDataSource {
 
-    @GET("posts")
-    Observable<List<Post>> getPosts();
-
-    @GET("users")
     Observable<List<User>> getUsers();
 
-    @GET("comments")
+    Observable<List<Post>> getPosts();
+
     Observable<List<Comment>> getComments();
 
 }
