@@ -16,21 +16,25 @@ import javax.inject.Singleton;
 @Singleton
 public class RemoteDataSource implements IRemoteDataSource {
 
+    APIInterface mApiInterface;
+
     @Inject
-    APIInterface apiInterface;
+    public RemoteDataSource(APIInterface apiInterface) {
+        mApiInterface = apiInterface;
+    }
 
     @Override
     public Observable<List<User>> getUsers() {
-        return apiInterface.getUsers();
+        return mApiInterface.getUsers();
     }
 
     @Override
     public Observable<List<Post>> getPosts() {
-        return apiInterface.getPosts();
+        return mApiInterface.getPosts();
     }
 
     @Override
     public Observable<List<Comment>> getComments() {
-        return apiInterface.getComments();
+        return mApiInterface.getComments();
     }
 }

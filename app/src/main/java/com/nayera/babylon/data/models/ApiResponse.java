@@ -5,6 +5,20 @@ public class ApiResponse<T> {
     private Status status;
     private T data;
 
+
+    public ApiResponse(T data) {
+        this(data, null);
+    }
+
+    public ApiResponse(Status status) {
+        this(null, status);
+    }
+
+    public ApiResponse(T data, Status status) {
+        this.data = data;
+        status = status;
+    }
+
     public Status getStatus() {
         return status;
     }
@@ -20,4 +34,6 @@ public class ApiResponse<T> {
     public void setData(T data) {
         this.data = data;
     }
+
+
 }

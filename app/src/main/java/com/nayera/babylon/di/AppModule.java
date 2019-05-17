@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.nayera.babylon.BuildConfig;
 import com.nayera.babylon.api.APIInterface;
+import com.nayera.babylon.data.remote.RemoteDataSource;
 
 import javax.inject.Singleton;
 
@@ -26,6 +27,11 @@ public class AppModule {
     @Provides
     Context provideContext() {
         return mApplication.getApplicationContext();
+    }
+
+    @Provides
+    RemoteDataSource provideRemoteDataSource(APIInterface apiInterface) {
+        return new RemoteDataSource(apiInterface);
     }
 
 
