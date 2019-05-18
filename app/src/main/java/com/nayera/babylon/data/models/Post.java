@@ -3,6 +3,8 @@ package com.nayera.babylon.data.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Post {
 
     @SerializedName("userId")
@@ -20,6 +22,25 @@ public class Post {
     @SerializedName("body")
     @Expose
     private String body;
+
+    private User user;
+    private List<Comment> commentList;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
 
     public String getUserId() {
         return userId;
@@ -52,7 +73,6 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
-
 
 
 }

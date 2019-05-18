@@ -10,13 +10,13 @@ public class ApiResponse<T> {
         this(data, null);
     }
 
-    public ApiResponse(Status status) {
-        this(null, status);
+    public ApiResponse(Status mstatus) {
+        this(null, mstatus);
     }
 
-    public ApiResponse(T data, Status status) {
+    public ApiResponse(T data, Status mstatus) {
         this.data = data;
-        status = status;
+        status = mstatus;
     }
 
     public Status getStatus() {

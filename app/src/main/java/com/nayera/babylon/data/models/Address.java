@@ -23,7 +23,7 @@ public class Address {
 
     @SerializedName("geo")
     @Expose
-    private String geoCoordinates;
+    private Geo geoCoordinates;
 
     public String getStreet() {
         return street;
@@ -57,11 +57,11 @@ public class Address {
         this.zipcode = zipcode;
     }
 
-    public String getGeoCoordinates() {
+    public Geo getGeoCoordinates() {
         return geoCoordinates;
     }
 
-    public void setGeoCoordinates(String geoCoordinates) {
+    public void setGeoCoordinates(Geo geoCoordinates) {
         this.geoCoordinates = geoCoordinates;
     }
 }
