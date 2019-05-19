@@ -3,6 +3,6 @@
     android:id="@+id/progressbar"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:indeterminateTint="@android:color/black"
+    android:indeterminateTint="@color/colorAccent"
     android:indeterminateTintMode="src_in"
     android:visibility="visible"></ProgressBar>

@@ -11,20 +11,24 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nayera.babylon.BabylonApplication;
 import com.nayera.babylon.R;
 import com.nayera.babylon.data.models.ApiResponse;
+import com.nayera.babylon.data.models.Post;
 import com.nayera.babylon.data.models.Status;
 import com.nayera.babylon.ui.common.BaseFragment;
+
+import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class PostsListingFragment extends BaseFragment {
+public class PostsListingFragment extends BaseFragment implements PostsListAdapter.OnItemClickListener {
 
     public static String TAG = "PostsListingFragment";
 
@@ -70,35 +74,24 @@ public class PostsListingFragment extends BaseFragment {
 
         mPostsListingViewModel.getPostsData().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ApiResponse>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ApiResponse apiResponse) {
-                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+                .subscribe(this::getPostDataResponse);
     }
 
+    private void getPostDataResponse(ApiResponse apiResponse) {
+        if (apiResponse.getStatus().equals(Status.SUCCESS)) {
+            PostsListAdapter adapter = new PostsListAdapter((List<Post>) apiResponse.getData(), this);
+            rvPostsListing.setAdapter(adapter);
+            rvPostsListing.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }
+    }
+
+
     private void showLoadingStatus(Boolean loadingStatus) {
-//        if (loadingStatus) {
-//            showProgress();
-//        } else {
-//            hideProgress();
-//        }
+        if (loadingStatus) {
+            showProgress();
+        } else {
+            hideProgress();
+        }
     }
 
     @Override
@@ -125,5 +118,11 @@ public class PostsListingFragment extends BaseFragment {
     @Override
     public void showError(Status status) {
 
+    }
+
+    @Override
+    public void onItemClick(Post post) {
+        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+        String str="";
     }
 }
