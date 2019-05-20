@@ -19,7 +19,10 @@ import com.nayera.babylon.R;
 import com.nayera.babylon.data.models.ApiResponse;
 import com.nayera.babylon.data.models.Post;
 import com.nayera.babylon.data.models.Status;
+import com.nayera.babylon.helpers.Utils;
 import com.nayera.babylon.ui.common.BaseFragment;
+import com.nayera.babylon.ui.posts.postsdetails.PostDetailsActivity;
+import com.nayera.babylon.uihelpers.VerticalSpaceItemDecoration;
 
 import java.util.List;
 
@@ -52,6 +55,12 @@ public class PostsListingFragment extends BaseFragment implements PostsListAdapt
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+        VerticalSpaceItemDecoration spaceItemDecoration = new VerticalSpaceItemDecoration((int) getResources().getDimension(R.dimen.margin_normal));
+        rvPostsListing.addItemDecoration(spaceItemDecoration);
     }
 
     @Override
@@ -79,6 +88,7 @@ public class PostsListingFragment extends BaseFragment implements PostsListAdapt
 
     private void getPostDataResponse(ApiResponse apiResponse) {
         if (apiResponse.getStatus().equals(Status.SUCCESS)) {
+
             PostsListAdapter adapter = new PostsListAdapter((List<Post>) apiResponse.getData(), this);
             rvPostsListing.setAdapter(adapter);
             rvPostsListing.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -117,12 +127,16 @@ public class PostsListingFragment extends BaseFragment implements PostsListAdapt
 
     @Override
     public void showError(Status status) {
-
+        if (status.equals(Status.NO_NETWORK)) {
+            Utils.showToastMsg(getActivity(), getResources().getString(R.string.no_network_error));
+        } else {
+            Utils.showToastMsg(getActivity(), getResources().getString(R.string.generic_error));
+        }
     }
 
     @Override
     public void onItemClick(Post post) {
-        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-        String str="";
+        PostDetailsActivity.startActivity(getActivity(), post);
+
     }
 }

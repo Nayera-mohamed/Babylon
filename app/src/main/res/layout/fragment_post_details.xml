@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:elevation="@dimen/cardElevation"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_large">
+
+        <LinearLayout
+            android:id="@+id/authorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgUserAvatar"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_avatar" />
+
+            <TextView
+                android:id="@+id/txtAuthorName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imgUserAvatar"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_large"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtPostTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_large"
+            android:textStyle="bold"
+            android:layout_below="@id/authorLayout"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/txtPostBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtPostTitle"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_large"
+            android:textColor="@android:color/black" />
+
+
+        <TextView
+            android:id="@+id/txtCommentsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtPostBody"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/black" />
+
+
+        <include layout="@layout/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

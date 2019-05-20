@@ -1,9 +1,12 @@
 package com.nayera.babylon.data.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Address {
+public class Address implements Parcelable {
 
     @SerializedName("street")
     @Expose
@@ -24,6 +27,40 @@ public class Address {
     @SerializedName("geo")
     @Expose
     private Geo geoCoordinates;
+
+    protected Address(Parcel in) {
+        street = in.readString();
+        suite = in.readString();
+        city = in.readString();
+        zipcode = in.readString();
+        geoCoordinates = in.readParcelable(Geo.class.getClassLoader());
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(street);
+        dest.writeString(suite);
+        dest.writeString(city);
+        dest.writeString(zipcode);
+        dest.writeParcelable(geoCoordinates, flags);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Address> CREATOR = new Creator<Address>() {
+        @Override
+        public Address createFromParcel(Parcel in) {
+            return new Address(in);
+        }
+
+        @Override
+        public Address[] newArray(int size) {
+            return new Address[size];
+        }
+    };
 
     public String getStreet() {
         return street;

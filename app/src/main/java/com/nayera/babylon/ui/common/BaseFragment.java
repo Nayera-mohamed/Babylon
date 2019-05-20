@@ -39,7 +39,8 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void unbindViewModel() {
-        compositeDisposable.clear();
+        if (compositeDisposable != null)
+            compositeDisposable.clear();
     }
 
     public abstract void initViewModel();

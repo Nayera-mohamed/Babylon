@@ -28,6 +28,7 @@ public class PostsListingViewModel extends BaseViewModel {
     BabylonApplication mApplication;
 
     List<Post> postsListing;
+    ApiResponse<Post> currentPostsList;
 
     public PostsListingViewModel(BabylonApplication application) {
         mApplication = application;
@@ -35,27 +36,31 @@ public class PostsListingViewModel extends BaseViewModel {
     }
 
     public Observable<ApiResponse> getPostsData() {
-        return Observable.zip(postsListingRepository.getPosts(), postsListingRepository.getUsers(), postsListingRepository.getComments(),
-                new Function3<Object, Object, Object, Object>() {
-                    @Override
-                    public Object apply(Object o, Object o2, Object o3) throws Exception {
+        if (currentPostsList == null) {
+            return Observable.zip(postsListingRepository.getPosts(), postsListingRepository.getUsers(), postsListingRepository.getComments(),
+                    new Function3<Object, Object, Object, Object>() {
+                        @Override
+                        public Object apply(Object o, Object o2, Object o3) throws Exception {
 
-                        ApiResponse posts = (ApiResponse<Post>) o;
-                        ApiResponse users = (ApiResponse<User>) o2;
-                        ApiResponse comments = (ApiResponse<Comment>) o3;
+                            ApiResponse posts = (ApiResponse<Post>) o;
+                            ApiResponse users = (ApiResponse<User>) o2;
+                            ApiResponse comments = (ApiResponse<Comment>) o3;
 
-                        if (posts.getStatus() != null && posts.getStatus().equals(Status.SUCCESS)) {
-                            return getPostsList(posts, users, comments);
-                        } else {
-                            showError(posts.getStatus());
-                            return posts;
+                            if (posts.getStatus() != null && posts.getStatus().equals(Status.SUCCESS)) {
+                                currentPostsList = getPostsList(posts, users, comments);
+                                return currentPostsList;
+                            } else {
+                                showError(posts.getStatus());
+                                return posts;
+                            }
                         }
-                    }
-                })
-                .doOnSubscribe(disposable -> showProgressBar())
-                .doOnError(throwable -> hideProgressBar())
-                .doOnComplete(() -> hideProgressBar())
-                .onErrorReturnItem(new ApiResponse<>(Status.ERROR));
+                    })
+                    .doOnSubscribe(disposable -> showProgressBar())
+                    .doOnError(throwable -> hideProgressBar())
+                    .doOnComplete(() -> hideProgressBar())
+                    .onErrorReturnItem(new ApiResponse<>(Status.ERROR));
+        } else
+            return Observable.just(currentPostsList);
     }
 
     /**

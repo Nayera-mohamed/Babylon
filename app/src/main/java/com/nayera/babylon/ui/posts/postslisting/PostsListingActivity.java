@@ -2,7 +2,6 @@ package com.nayera.babylon.ui.posts.postslisting;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.nayera.babylon.R;
@@ -13,7 +12,7 @@ public class PostsListingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_posts_listing);
+        setContentView(R.layout.activity_generic);
         initViews();
         setListeners();
 

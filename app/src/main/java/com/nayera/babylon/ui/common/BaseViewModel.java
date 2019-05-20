@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.nayera.babylon.data.models.Status;
 
+import java.util.concurrent.Callable;
+
+import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 
 public class BaseViewModel extends ViewModel {
@@ -36,4 +39,6 @@ public class BaseViewModel extends ViewModel {
     public PublishSubject<Status> getErrors() {
         return errorSubject;
     }
+
+
 }

@@ -52,6 +52,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    public void showBackButton() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
     public abstract void initViews();
 
     public abstract void setListeners();

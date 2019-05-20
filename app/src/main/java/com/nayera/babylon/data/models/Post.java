@@ -1,11 +1,14 @@
 package com.nayera.babylon.data.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Post {
+public class Post implements Parcelable {
 
     @SerializedName("userId")
     @Expose
@@ -25,6 +28,42 @@ public class Post {
 
     private User user;
     private List<Comment> commentList;
+
+    protected Post(Parcel in) {
+        userId = in.readString();
+        id = in.readString();
+        title = in.readString();
+        body = in.readString();
+        user = in.readParcelable(User.class.getClassLoader());
+        commentList = in.readArrayList(Comment.class.getClassLoader());
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(userId);
+        dest.writeString(id);
+        dest.writeString(title);
+        dest.writeString(body);
+        dest.writeParcelable(user, flags);
+        dest.writeList(commentList);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
 
     public User getUser() {
         return user;

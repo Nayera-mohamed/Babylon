@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Babylon</string>
     <string name="title_activity_posts_listing">Posts</string>
+    <string name="title_activity_post_details">Post Details</string>
+    <string name="generic_error">An error has occurred, please try again later.</string>
+    <string name="no_network_error">The device is not connected to the internet</string>
+
+    <string name="comments">Comments</string>
+
 </resources>
