@@ -1,6 +1,6 @@
 # Babylon Task
 
-This project represnets Babylon task
+This project represents Babylon task
 
 ## Description
 
