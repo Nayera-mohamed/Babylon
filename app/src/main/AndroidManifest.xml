@@ -17,6 +17,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.posts.postslisting.PostsListingActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait">
 
             <intent-filter>
