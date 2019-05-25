@@ -28,6 +28,10 @@ public class Address implements Parcelable {
     @Expose
     private Geo geoCoordinates;
 
+    public Address() {
+
+    }
+
     protected Address(Parcel in) {
         street = in.readString();
         suite = in.readString();

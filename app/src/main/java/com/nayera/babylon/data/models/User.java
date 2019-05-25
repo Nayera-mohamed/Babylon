@@ -40,6 +40,24 @@ public class User implements Parcelable {
     @Expose
     private Company company;
 
+    public User() {
+
+    }
+
+    public User(String id, String name, String userName, String email, String phone, String website, Address address, Company company) {
+
+        this.id = id;
+        this.name = name;
+        this.username = userName;
+        this.email = email;
+        this.phone = phone;
+        this.website = website;
+        this.address = address;
+        this.company = company;
+
+
+    }
+
     protected User(Parcel in) {
         id = in.readString();
         name = in.readString();
@@ -143,7 +161,6 @@ public class User implements Parcelable {
     public void setCompany(Company company) {
         this.company = company;
     }
-
 
 
 }

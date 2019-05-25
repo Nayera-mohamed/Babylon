@@ -29,6 +29,20 @@ public class Post implements Parcelable {
     private User user;
     private List<Comment> commentList;
 
+    public Post() {
+
+    }
+
+    public Post(String userId, String id, String title, String body, User user, List<Comment> comments) {
+        this.userId = userId;
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.user = user;
+        this.commentList = comments;
+
+    }
+
     protected Post(Parcel in) {
         userId = in.readString();
         id = in.readString();

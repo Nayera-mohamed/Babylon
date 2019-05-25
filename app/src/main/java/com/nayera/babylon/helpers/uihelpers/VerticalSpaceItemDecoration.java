@@ -1,4 +1,4 @@
-package com.nayera.babylon.uihelpers;
+package com.nayera.babylon.helpers.uihelpers;
 
 import android.graphics.Rect;
 import android.view.View;

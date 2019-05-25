@@ -7,28 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.nayera.babylon.BabylonApplication;
 import com.nayera.babylon.R;
 import com.nayera.babylon.data.models.ApiResponse;
-import com.nayera.babylon.data.models.Comment;
 import com.nayera.babylon.data.models.Post;
 import com.nayera.babylon.data.models.Status;
 import com.nayera.babylon.helpers.Utils;
 import com.nayera.babylon.ui.common.BaseFragment;
-import com.nayera.babylon.ui.posts.postslisting.PostsListAdapter;
-import com.nayera.babylon.ui.posts.postslisting.PostsListingViewModel;
-import com.nayera.babylon.ui.posts.postslisting.PostsListingViewModelFactory;
-import com.nayera.babylon.uihelpers.VerticalSpaceItemDecoration;
-
-import java.util.List;
+import com.nayera.babylon.helpers.uihelpers.VerticalSpaceItemDecoration;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

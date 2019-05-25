@@ -20,6 +20,10 @@ public class Company implements Parcelable {
     @Expose
     private String brief;
 
+    public Company() {
+
+    }
+
     protected Company(Parcel in) {
         name = in.readString();
         catchPhrase = in.readString();

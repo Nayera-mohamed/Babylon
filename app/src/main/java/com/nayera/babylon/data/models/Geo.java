@@ -16,6 +16,11 @@ public class Geo implements Parcelable {
     @Expose
     private String longitude;
 
+    public Geo() {
+
+    }
+
+
     protected Geo(Parcel in) {
         latitude = in.readString();
         longitude = in.readString();

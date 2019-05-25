@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,13 +21,11 @@ import com.nayera.babylon.data.models.Status;
 import com.nayera.babylon.helpers.Utils;
 import com.nayera.babylon.ui.common.BaseFragment;
 import com.nayera.babylon.ui.posts.postsdetails.PostDetailsActivity;
-import com.nayera.babylon.uihelpers.VerticalSpaceItemDecoration;
+import com.nayera.babylon.helpers.uihelpers.VerticalSpaceItemDecoration;
 
 import java.util.List;
 
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class PostsListingFragment extends BaseFragment implements PostsListAdapter.OnItemClickListener {
