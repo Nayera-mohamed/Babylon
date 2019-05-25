@@ -32,7 +32,8 @@ public class PostsListingViewModel extends BaseViewModel {
 
     public PostsListingViewModel(BabylonApplication application) {
         mApplication = application;
-        mApplication.getApplicationComponent().inject(this);
+        if (mApplication.getApplicationComponent() != null)
+            mApplication.getApplicationComponent().inject(this);
     }
 
     public Observable<ApiResponse> getPostsData() {

@@ -32,12 +32,12 @@ public class BaseViewModel extends ViewModel {
         errorSubject.onNext(status);
     }
 
-    public PublishSubject<Boolean> getLoadingStatus() {
-        return loadingSubject;
+    public Observable<Boolean> getLoadingStatus() {
+        return loadingSubject.hide();
     }
 
-    public PublishSubject<Status> getErrors() {
-        return errorSubject;
+    public Observable<Status> getErrors() {
+        return errorSubject.hide();
     }
 
 
