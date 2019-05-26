@@ -22,18 +22,15 @@ import io.reactivex.Observable;
 import io.reactivex.functions.Function3;
 
 public class PostsListingViewModel extends BaseViewModel {
-    @Inject
-    public PostsListingRepository postsListingRepository;
 
-    BabylonApplication mApplication;
+    public PostsListingRepository postsListingRepository;
 
     List<Post> postsListing;
     ApiResponse<Post> currentPostsList;
 
-    public PostsListingViewModel(BabylonApplication application) {
-        mApplication = application;
-        if (mApplication.getApplicationComponent() != null)
-            mApplication.getApplicationComponent().inject(this);
+    @Inject
+    public PostsListingViewModel(PostsListingRepository postsListingRepository) {
+        this.postsListingRepository = postsListingRepository;
     }
 
     public Observable<ApiResponse> getPostsData() {

@@ -1,6 +1,7 @@
 package com.nayera.babylon.di;
 
 import com.nayera.babylon.api.APIInterface;
+import com.nayera.babylon.ui.posts.postslisting.PostsListingFragment;
 import com.nayera.babylon.ui.posts.postslisting.PostsListingModule;
 import com.nayera.babylon.ui.posts.postslisting.PostsListingRepository;
 import com.nayera.babylon.ui.posts.postslisting.PostsListingViewModel;
@@ -16,7 +17,7 @@ import dagger.Component;
 })
 public interface ApplicationComponent {
 
-    void inject(PostsListingViewModel postsListingViewModel);
+    void inject(PostsListingFragment postsListingFragment);
 
 
 }

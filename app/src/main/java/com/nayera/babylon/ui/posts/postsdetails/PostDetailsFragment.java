@@ -59,6 +59,10 @@ public class PostDetailsFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @Override
+    public void injectDependencies() {
+
+    }
 
     @Override
     public void initViewModel() {

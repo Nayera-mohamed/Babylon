@@ -8,17 +8,16 @@ import androidx.lifecycle.ViewModelProvider;
 import com.nayera.babylon.BabylonApplication;
 
 public class PostsListingViewModelFactory implements ViewModelProvider.Factory {
+    PostsListingRepository mPostsListingRepository;
 
-    BabylonApplication mApplication;
-
-    public PostsListingViewModelFactory(BabylonApplication application) {
-        mApplication = application;
+    public PostsListingViewModelFactory(PostsListingRepository postsListingRepository) {
+        mPostsListingRepository = postsListingRepository;
     }
 
 
     public <T extends ViewModel> T create(Class<T> modelClass) {
         if (modelClass.isAssignableFrom(PostsListingViewModel.class)) {
-            return (T) new PostsListingViewModel(mApplication);
+            return (T) new PostsListingViewModel(mPostsListingRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class");
     }

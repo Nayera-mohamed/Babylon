@@ -25,6 +25,8 @@ import com.nayera.babylon.helpers.uihelpers.VerticalSpaceItemDecoration;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -36,6 +38,9 @@ public class PostsListingFragment extends BaseFragment implements PostsListAdapt
     RecyclerView rvPostsListing;
 
     PostsListingViewModel mPostsListingViewModel;
+
+    @Inject
+    PostsListingRepository postsListingRepository;
 
     public static PostsListingFragment newInstance() {
         return new PostsListingFragment();
@@ -53,6 +58,13 @@ public class PostsListingFragment extends BaseFragment implements PostsListAdapt
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initRecyclerView();
+
+    }
+
+    @Override
+    public void injectDependencies() {
+        if (getActivity() != null && getActivity().getApplication() != null)
+            ((BabylonApplication) getActivity().getApplication()).getApplicationComponent().inject(this);
     }
 
     private void initRecyclerView() {
@@ -63,7 +75,7 @@ public class PostsListingFragment extends BaseFragment implements PostsListAdapt
     @Override
     public void initViewModel() {
         PostsListingViewModelFactory factory =
-                new PostsListingViewModelFactory((BabylonApplication) getActivity().getApplication());
+                new PostsListingViewModelFactory(postsListingRepository);
         mPostsListingViewModel = ViewModelProviders.of(this, factory).get(PostsListingViewModel.class);
 
     }

@@ -19,6 +19,7 @@ public abstract class BaseFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        injectDependencies();
         initViewModel();
     }
 
@@ -42,6 +43,8 @@ public abstract class BaseFragment extends Fragment {
         if (compositeDisposable != null)
             compositeDisposable.clear();
     }
+
+    public abstract void injectDependencies();
 
     public abstract void initViewModel();
 
