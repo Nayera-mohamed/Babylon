@@ -45,8 +45,13 @@ public class PostsListingViewModel extends BaseViewModel {
                             ApiResponse comments = (ApiResponse<Comment>) o3;
 
                             if (posts.getStatus() != null && posts.getStatus().equals(Status.SUCCESS)) {
-                                currentPostsList = getPostsList(posts, users, comments);
-                                return currentPostsList;
+                                if (posts.getData() != null) {
+                                    currentPostsList = getPostsList(posts, users, comments);
+                                    return currentPostsList;
+                                } else {
+                                    showError(Status.NO_DATA);
+                                    return posts;
+                                }
                             } else {
                                 showError(posts.getStatus());
                                 return posts;
